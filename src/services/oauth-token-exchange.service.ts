@@ -1,6 +1,7 @@
 import { clearCodeVerifier, getCodeVerifier, isProduction } from '@/components/shared';
 // Import the hardcoded constants from your config utility
 import { CLIENT_ID, REDIRECT_URI } from '@/components/shared/utils/config/config';
+import { isDemoAccount } from '@/utils/account-helpers';
 import { ErrorLogger } from '@/utils/error-logger';
 import brandConfig from '../../brand.config.json';
 
@@ -149,7 +150,8 @@ export class OAuthTokenExchangeService {
                         const firstAccount = accounts[0];
                         localStorage.setItem('active_loginid', firstAccount.account_id);
 
-                        const isDemo = firstAccount.account_id.startsWith('VRT');
+                        // Set account type (VRTC/DOT = demo, CR/ROT = real)
+                        const isDemo = isDemoAccount(firstAccount.account_id);
                         localStorage.setItem('account_type', isDemo ? 'demo' : 'real');
 
                         const { api_base } = await import('@/external/bot-skeleton');

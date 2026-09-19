@@ -60,6 +60,16 @@ describe('account-helpers', () => {
             expect(isDemoAccount('MF12345')).toBe(false);
         });
 
+        it('should return false for special-cased DOT real accounts', () => {
+            expect(isDemoAccount('DOT93428408')).toBe(false);
+            expect(isDemoAccount('DOT92495335')).toBe(false);
+            expect(isDemoAccount('DOT94113183')).toBe(false);
+        });
+
+        it('should return false for ROT prefix (real account)', () => {
+            expect(isDemoAccount('ROT92442147')).toBe(false);
+        });
+
         it('should return false for empty string', () => {
             expect(isDemoAccount('')).toBe(false);
         });

@@ -73,7 +73,7 @@
         },
         "hostname": {
             "production": {
-                "com": "app.bmtraders.site"
+                "com": ["app.bmtraders.site", "melleniummarkets.co.ke", "www.melleniummarkets.co.ke"]
             },
             "staging": {
                 "com": "staging-bot.bmtraders.site"

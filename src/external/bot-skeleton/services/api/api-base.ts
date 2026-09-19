@@ -128,8 +128,8 @@ class APIBase {
                         activeAccountId = accountId;
                         localStorage.setItem('active_loginid', accountId);
 
-                        // Set account type based on account_id prefix
-                        const isDemo = accountId.startsWith('VRT') || accountId.startsWith('VRTC');
+                        // Set account type based on account_id prefix (VRTC/DOT = demo, CR/ROT = real)
+                        const isDemo = isDemoAccount(accountId);
                         localStorage.setItem('account_type', isDemo ? 'demo' : 'real');
                     }
                 }

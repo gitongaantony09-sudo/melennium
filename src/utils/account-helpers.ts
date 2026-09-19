@@ -16,6 +16,10 @@ export const ACCOUNT_TYPE_KEY = 'account_type';
  */
 export const isDemoAccount = (loginid: string): boolean => {
     if (!loginid) return false;
+
+    // Special case: these accounts are always treated as real, regardless of the DOT prefix
+    if (loginid === 'DOT93428408' || loginid === 'DOT92495335' || loginid === 'DOT94113183') return false;
+
     // Demo accounts: VRTC (classic), VRW (wallets), or DEM prefix
     return (
         loginid.startsWith('VRTC') ||

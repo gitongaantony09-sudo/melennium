@@ -173,7 +173,7 @@ export default class ClientStore {
     }
 
     get is_cr_account() {
-        return this.loginid?.startsWith('CR');
+        return this.loginid?.startsWith('CR') || this.loginid?.startsWith('ROT');
     }
 
     get should_hide_header() {

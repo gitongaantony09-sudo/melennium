@@ -9,7 +9,21 @@ import brandConfig from '../../../../../brand.config.json';
 export const CLIENT_ID = '349csAfIXXOmHtj6ys2EG';
 
 // Using domain_name from brand.config.json to ensure consistency
-export const REDIRECT_URI = 'https://melennium.vercel.app';
+const DEFAULT_REDIRECT_URI = 'https://melennium.vercel.app';
+
+// Production brand domains (a single domain or a list), flattened to an array
+const PRODUCTION_HOSTNAMES = ([] as string[]).concat(brandConfig.platform.hostname.production.com);
+
+// On any production brand domain, redirect back to that same origin so OAuth works per domain
+// (each origin must be registered as a redirect URI on the Deriv app). Elsewhere, use the default.
+const getRedirectUri = () => {
+    if (typeof window !== 'undefined' && PRODUCTION_HOSTNAMES.includes(window.location.hostname)) {
+        return window.location.origin;
+    }
+    return DEFAULT_REDIRECT_URI;
+};
+
+export const REDIRECT_URI = getRedirectUri();
 
 // Construct WebSocket URLs from platform.derivws config
 export const WS_SERVERS = {
