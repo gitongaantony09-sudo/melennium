@@ -22,9 +22,9 @@ const MenuHeader = ({ hideLanguageSetting, openLanguageSetting }: TMenuHeader) =
             {/* [AI] Show brand logo instead of "Menu" text 
             <BrandLogo width={100} height={28} fill='var(--text-general)' />*/}
            <div className='logo-section-mobile'>
-                                   <img src={MyLogo} alt='Turbo Print Pro Hub Logo' className='my-logo-mobile' />
+                                   <img src={MyLogo} alt='Mellenium Logo' className='my-logo-mobile' />
                                    <h2>
-                                       Turbo Print Pro Hub
+                                       Mellenium
                                    </h2>
                                </div>
 

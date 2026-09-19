@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useStore } from '@/hooks/useStore';
 import { useDevice } from '@deriv-com/ui';
+import brandConfig from '@/../brand.config.json';
 import './main-body.scss';
 
 type TMainBodyProps = {
@@ -8,7 +9,9 @@ type TMainBodyProps = {
 };
 
 const MainBody: React.FC<TMainBodyProps> = ({ children }) => {
-    const current_theme = localStorage.getItem('theme') ?? 'light';
+    // With the theme toggle disabled in brand.config.json, always light (ignores a stale saved 'dark')
+    const enableThemeToggle = brandConfig.platform.footer?.enable_theme_toggle ?? true;
+    const current_theme = enableThemeToggle ? (localStorage.getItem('theme') ?? 'light') : 'light';
     const { ui } = useStore() ?? {
         ui: {
             setDevice: () => {},

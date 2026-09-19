@@ -1,12 +1,14 @@
 import { action, makeObservable, observable } from 'mobx';
 import { isTouchDevice } from '@/components/shared/utils/screen/responsive';
+import brandConfig from '@/../brand.config.json';
 
 export default class UiStore {
     is_mobile = true;
     is_desktop = true;
     is_tablet = false;
     is_chart_layout_default = true;
-    is_dark_mode_on = localStorage.getItem('theme') === 'dark';
+    // With the theme toggle disabled in brand.config.json, always light (ignores a stale saved 'dark')
+    is_dark_mode_on = (brandConfig.platform.footer?.enable_theme_toggle ?? true) && localStorage.getItem('theme') === 'dark';
     account_switcher_disabled_message = '';
     current_focus = null;
     show_prompt = false;

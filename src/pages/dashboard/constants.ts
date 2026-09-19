@@ -8,7 +8,7 @@ export type TSidebarItem = {
 
 export const SIDEBAR_INTRO = (): TSidebarItem[] => [
     {
-        label: localize('Welcome to 360 Hub!'),
+        label: localize('Welcome to Millenium!'),
         content: [
             {
                 data: localize(
@@ -21,14 +21,14 @@ export const SIDEBAR_INTRO = (): TSidebarItem[] => [
     },
     {
         label: localize('Guide'),
-        content: [{ data: localize('360 Hub - your automated trading partner') }],
+        content: [{ data: localize('Millenium - your automated trading partner') }],
         link: true,
     },
     {
         label: localize('FAQs'),
         content: [
             {
-                data: localize('What is 360 Hub?'),
+                data: localize('What is Millenium?'),
                 faq_id: 'faq-0',
             },
             {
