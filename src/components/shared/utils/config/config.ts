@@ -9,7 +9,7 @@ import brandConfig from '../../../../../brand.config.json';
 export const CLIENT_ID = '349csAfIXXOmHtj6ys2EG';
 
 // Using domain_name from brand.config.json to ensure consistency
-export const REDIRECT_URI = 'https://crazyprinterpro.vercel.app/callback';
+export const REDIRECT_URI = 'https://melennium.vercel.app';
 
 // Construct WebSocket URLs from platform.derivws config
 export const WS_SERVERS = {
