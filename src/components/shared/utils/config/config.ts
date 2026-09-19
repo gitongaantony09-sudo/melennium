@@ -25,20 +25,6 @@ const getRedirectUri = () => {
 
 export const REDIRECT_URI = getRedirectUri();
 
-/**
- * Deriv only accepts the exact redirect URLs registered on the app, and the PKCE verifier lives in
- * per-origin sessionStorage. So a visit to www.<domain> is sent to <domain> (when that apex is a
- * production domain) before any login starts. Returns true when a redirect was triggered.
- */
-export const redirectToCanonicalHost = (): boolean => {
-    if (typeof window === 'undefined') return false;
-    const { hostname, href } = window.location;
-    const apex = hostname.replace(/^www\./, '');
-    if (apex === hostname || !PRODUCTION_HOSTNAMES.includes(apex)) return false;
-    window.location.replace(href.replace(`//${hostname}`, `//${apex}`));
-    return true;
-};
-
 // Construct WebSocket URLs from platform.derivws config
 export const WS_SERVERS = {
     STAGING: `${brandConfig.platform.derivws.url.staging}${brandConfig.platform.derivws.directories.options}ws/public`,
