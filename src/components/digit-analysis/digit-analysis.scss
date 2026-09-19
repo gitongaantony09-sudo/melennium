@@ -28,6 +28,7 @@
         color: #fff;
         cursor: move;
         flex-shrink: 0;
+        touch-action: none;
     }
 
     &__heading {
@@ -339,8 +340,41 @@
             grid-template-columns: 1fr;
         }
 
+        &__body {
+            padding: 14px;
+        }
+
         &__digits {
-            grid-template-columns: repeat(4, 1fr);
+            gap: 12px 4px;
+        }
+
+        &__digit {
+            width: 56px;
+            height: 56px;
+        }
+
+        &__digit-number {
+            font-size: 18px;
+        }
+
+        &__digit-percentage {
+            font-size: 10px;
+        }
+
+        &__market {
+            font-size: 17px;
+        }
+
+        &__price {
+            font-size: 22px;
+        }
+
+        &__price-digit {
+            font-size: 34px;
+        }
+
+        &__tile strong {
+            font-size: 20px;
         }
     }
 }

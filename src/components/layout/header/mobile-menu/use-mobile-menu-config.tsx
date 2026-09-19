@@ -1,4 +1,6 @@
 import { ComponentProps, ReactNode, useMemo } from 'react';
+import DigitAnalysisIcon from '@/components/digit-analysis/digit-analysis-icon';
+import { useStore } from '@/hooks/useStore';
 import useThemeSwitcher from '@/hooks/useThemeSwitcher';
 import RootStore from '@/stores/root-store';
 import { LegacyLogout1pxIcon, LegacyTheme1pxIcon } from '@deriv/quill-icons/Legacy';
@@ -19,6 +21,7 @@ type TMenuConfig = {
     submenu?: TSubmenuSection;
     target?: ComponentProps<'a'>['target'];
     isActive?: boolean;
+    closeMenuOnClick?: boolean;
 }[];
 
 const useMobileMenuConfig = (
@@ -28,6 +31,8 @@ const useMobileMenuConfig = (
 ) => {
     const { localize } = useTranslations();
     const { is_dark_mode_on, toggleTheme } = useThemeSwitcher();
+    const { dashboard } = useStore() ?? {};
+    const setDigitAnalysisModalVisibility = dashboard?.setDigitAnalysisModalVisibility;
 
     const menuConfig = useMemo((): TMenuConfig[] => {
         return [
@@ -48,6 +53,14 @@ const useMobileMenuConfig = (
                 //
                 // For desktop menu items, see:
                 // src/components/layout/header/header-config.tsx
+
+                {
+                    as: 'button',
+                    label: localize('Digit analysis'),
+                    LeftComponent: DigitAnalysisIcon,
+                    onClick: () => setDigitAnalysisModalVisibility?.(),
+                    closeMenuOnClick: true,
+                },
 
                 // Conditionally include theme toggle based on brand config
                 enableThemeToggle && {
@@ -74,6 +87,7 @@ const useMobileMenuConfig = (
         is_dark_mode_on,
         toggleTheme,
         localize,
+        setDigitAnalysisModalVisibility,
         enableThemeToggle, // [AI] Added to recalculate menu when theme toggle config changes
     ]);
 

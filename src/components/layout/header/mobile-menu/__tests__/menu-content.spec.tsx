@@ -41,6 +41,11 @@ describe('MenuContent Component', () => {
         expect(screen.getByText(/Log out/)).toBeInTheDocument();
     });
 
+    it('renders the Digit analysis item', () => {
+        render(<MenuContent onLogout={mockOnLogout} />, { wrapper });
+        expect(screen.getByText(/Digit analysis/)).toBeInTheDocument();
+    });
+
     it('adjusts text size for mobile devices', () => {
         render(<MenuContent onLogout={mockOnLogout} />, { wrapper });
         const text = screen.getByText(/Dark theme/);

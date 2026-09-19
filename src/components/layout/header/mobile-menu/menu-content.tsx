@@ -7,11 +7,12 @@ import useMobileMenuConfig from './use-mobile-menu-config';
 
 type TMenuContentProps = {
     enableThemeToggle?: boolean;
+    onCloseDrawer?: () => void;
     onOpenSubmenu?: (submenu: string) => void;
     onLogout?: () => void;
 };
 
-const MenuContent = observer(({ enableThemeToggle = true, onOpenSubmenu, onLogout }: TMenuContentProps) => {
+const MenuContent = observer(({ enableThemeToggle = true, onCloseDrawer, onOpenSubmenu, onLogout }: TMenuContentProps) => {
     const { isDesktop } = useDevice();
     const { client } = useStore();
     const textSize = isDesktop ? 'sm' : 'md';
@@ -45,6 +46,7 @@ const MenuContent = observer(({ enableThemeToggle = true, onOpenSubmenu, onLogou
                                         submenu,
                                         target,
                                         isActive,
+                                        closeMenuOnClick,
                                     },
                                     itemIndex
                                 ) => {
@@ -93,6 +95,7 @@ const MenuContent = observer(({ enableThemeToggle = true, onOpenSubmenu, onLogou
                                                     onOpenSubmenu(submenu);
                                                 } else if (onClick) {
                                                     onClick();
+                                                    if (closeMenuOnClick) onCloseDrawer?.();
                                                 }
                                             }}
                                             rightComponent={

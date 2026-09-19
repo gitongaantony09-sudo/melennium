@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import { observer } from 'mobx-react-lite';
+import DigitAnalysisIcon from '@/components/digit-analysis/digit-analysis-icon';
 import { useStore } from '@/hooks/useStore';
 import {
     LabelPairedArrowRotateLeftMdRegularIcon,
@@ -112,11 +113,7 @@ const WorkspaceGroup = observer(() => {
                                     data-testid='dt_toolbar_digit_analysis_button'
                                     onClick={() => setDigitAnalysisModalVisibility()}
                                 >
-                                    <svg width='24' height='24' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
-                                        <circle cx='12' cy='12' r='9.5' stroke='#ff444f' strokeWidth='2.4' />
-                                        <circle cx='12' cy='12' r='5.5' stroke='#ff444f' strokeWidth='2.4' />
-                                        <circle cx='12' cy='12' r='1.8' fill='#ff444f' />
-                                    </svg>
+                                    <DigitAnalysisIcon />
                                 </span>
                             }
                         />

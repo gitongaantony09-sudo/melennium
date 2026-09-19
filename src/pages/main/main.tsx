@@ -536,8 +536,8 @@ const AppWrapper = observer(() => {
                 </div>
                 <ChartModal />
                 <TradingViewModal />
-                <DigitAnalysisModal />
             </DesktopWrapper>
+            <DigitAnalysisModal />
             <MobileWrapper>{!is_open && <RunPanel />}</MobileWrapper>
             <Dialog
                 cancel_button_text={cancel_button_text || localize('Cancel')}
