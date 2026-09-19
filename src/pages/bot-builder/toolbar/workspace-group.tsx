@@ -21,7 +21,8 @@ import ToolbarIcon from './toolbar-icon';
 
 const WorkspaceGroup = observer(() => {
     const { dashboard, toolbar, load_modal, save_modal } = useStore();
-    const { setPreviewOnPopup, setChartModalVisibility, setTradingViewModalVisibility } = dashboard;
+    const { setPreviewOnPopup, setChartModalVisibility, setTradingViewModalVisibility, setDigitAnalysisModalVisibility } =
+        dashboard;
     const { has_redo_stack, has_undo_stack, onResetClick, onSortClick, onUndoClick, onZoomInOutClick } = toolbar;
     const { toggleSaveModal } = save_modal;
     const { toggleLoadModal } = load_modal;
@@ -99,6 +100,23 @@ const WorkspaceGroup = observer(() => {
                                     onClick={() => setTradingViewModalVisibility()}
                                 >
                                     <LabelPairedChartTradingviewMdRegularIcon />
+                                </span>
+                            }
+                        />
+                        <ToolbarIcon
+                            popover_message={localize('Digit analysis')}
+                            icon={
+                                <span
+                                    className='toolbar__icon'
+                                    id='db-toolbar__digit-analysis-button'
+                                    data-testid='dt_toolbar_digit_analysis_button'
+                                    onClick={() => setDigitAnalysisModalVisibility()}
+                                >
+                                    <svg width='24' height='24' viewBox='0 0 24 24' fill='none' aria-hidden='true'>
+                                        <circle cx='12' cy='12' r='9.5' stroke='#ff444f' strokeWidth='2.4' />
+                                        <circle cx='12' cy='12' r='5.5' stroke='#ff444f' strokeWidth='2.4' />
+                                        <circle cx='12' cy='12' r='1.8' fill='#ff444f' />
+                                    </svg>
                                 </span>
                             }
                         />

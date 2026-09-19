@@ -62,6 +62,7 @@ export interface IDashboardStore {
     toast_message: string;
     is_chart_modal_visible: boolean;
     is_trading_view_modal_visible: boolean;
+    is_digit_analysis_modal_visible: boolean;
     setPreviewOnPopup: (is_preview_on_popup: boolean) => void;
 }
 
@@ -124,6 +125,7 @@ export default class DashboardStore implements IDashboardStore {
             setShowMobileTourDialog: action.bound,
             is_chart_modal_visible: observable,
             is_trading_view_modal_visible: observable,
+            is_digit_analysis_modal_visible: observable,
             bot_builder_symbol: observable,
         });
         this.root_store = root_store;
@@ -210,6 +212,7 @@ export default class DashboardStore implements IDashboardStore {
     filtered_tab_list = [];
     is_chart_modal_visible = false;
     is_trading_view_modal_visible = false;
+    is_digit_analysis_modal_visible = false;
     faq_title = '';
 
     setFaqTitle = (faq_title: string) => {
@@ -299,6 +302,10 @@ export default class DashboardStore implements IDashboardStore {
 
     setTradingViewModalVisibility = () => {
         this.is_trading_view_modal_visible = !this.is_trading_view_modal_visible;
+    };
+
+    setDigitAnalysisModalVisibility = () => {
+        this.is_digit_analysis_modal_visible = !this.is_digit_analysis_modal_visible;
     };
 
     setIsFileSupported = (is_file_supported: boolean) => {
