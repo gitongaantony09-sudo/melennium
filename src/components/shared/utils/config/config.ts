@@ -6,7 +6,7 @@ import brandConfig from '../../../../../brand.config.json';
 // Constants - Derived from brand.config.json
 // =============================================================================
 
-export const CLIENT_ID = '32UpAZvxBqalqEFHVMTNS';
+export const CLIENT_ID = '349csAfIXXOmHtj6ys2EG';
 
 // Using domain_name from brand.config.json to ensure consistency
 export const REDIRECT_URI = 'https://crazyprinterpro.vercel.app/callback';
